@@ -1,0 +1,26 @@
+#global keybindings (to be overidden by more specifi keybindings)
+
+#terminal
+alias t /bin/sh
+#paste
+alias c xdotool key ctrl+shift+Insert
+#paste
+alias p xdotool key shift+Insert
+#quit
+alias q xdotool key mod4+shift+q
+#lock script
+alias lock sh ~/bin/lock.sh
+
+[google-chrome]
+#refresh
+alias r xdotool key F5
+#close tab
+alias ct xdotool key ctrl+F4
+#next tab
+alias nt xdotool key ctrl+Tab
+#previous tab
+alias pt xdotool key ctrl+shift+Tab
+
+[rxvt]
+#open terminal in same dir (notice how t is overidden by order of specificity)
+alias t sh ~/bin/new-urxvt.sh $WINI -v
