@@ -6,22 +6,21 @@ WINI=$(xdotool getwindowfocus)
 WIN=$(((xprop -id $WINI | grep "WM_CLASS") | tr "\"" "\n") | sed -n 2p)
 
 
-MAIN_DIALOG='
-<window width-request="300" resizable="false">
-  <vbox>
-    <hbox>
-      <text>
-        <label>'$WIN'</label>
-      </text>
-      <entry activates_default="true">
-        <variable>RET</variable>
-      </entry>
-      <button can-default="true" has-default="true"/></button>
-    </hbox>
-  </vbox>
-</window>
+export MAIN_DIALOG='
+  <window width-request="300" resizable="false">
+    <vbox>
+      <hbox>
+        <text>
+          <label>'$WIN'</label>
+        </text>
+        <entry activates_default="true">
+          <variable>RET</variable>
+        </entry>
+        <button can-default="true" has-default="true"/></button>
+      </hbox>
+    </vbox>
+  </window>
 '
-export MAIN_DIALOG
 
 TXT=$(gtkdialog --program=MAIN_DIALOG -w | head -n1)
 TXT=${TXT:5:${#TXT}}
@@ -78,5 +77,19 @@ if [[ $TXT == ";"* ]]; then
   TXT=${TXT/ ;/ }
 fi
 
-$(wmctrl -i $WINI)
-eval $TXT
+OUT=$(wmctrl -i $WINI & eval $TXT)
+#OUT=$(wmctrl -i $WINI; eval $TXT)
+
+#$(wmctrl -i $WINI)
+#OUT=$(eval $TXT)
+
+echo $OUT > ~/Documents/vim-keybindings/log
+
+
+for ARG in "$@"
+do
+  case $ARG in
+    -v) echo $OUT;;
+
+  esac
+done
