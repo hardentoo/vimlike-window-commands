@@ -9,7 +9,7 @@ alias p xdotool key shift+Insert
 #quit
 alias q xdotool key mod4+shift+q
 #lock script
-alias lock sh ~/bin/lock.sh
+alias lock sh ~/lock.sh
 
 [google-chrome]
 #refresh
@@ -23,4 +23,4 @@ alias pt xdotool key ctrl+shift+Tab
 
 [rxvt]
 #open terminal in same dir (notice how t is overidden by order of specificity)
-alias t sh ~/bin/new-urxvt.sh $WINI -v
+alias t sh ~/new-urxvt.sh $WINI -v
