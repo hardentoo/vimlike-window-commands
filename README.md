@@ -1,10 +1,12 @@
 # vimlike-window-commands
 
-A window specific vimlike commands for linux.   Commands can be aliased and all bash syntax (piping, redirection...) and commands (sed, grep...) can be used.
+Window specific vimlike commands for linux in bash.   Commands can be aliased and all bash syntax (piping, redirection...) and commands (sed, grep...) can be used.
 
 ---
 
 ###Installation
+- Install `xdotool`, `xprop`, `grep`, `sed`, `gtkdialog`, `wmctrl` dependencies.
+
 - Clone all of the dotfiles into your home user directory and make all sh scripts executable.
 
 - Bind `commands.sh` to a key
